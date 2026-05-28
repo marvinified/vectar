@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./docs/assets/vectar.png" alt="Voctar logo" width="180" />
+  <img src="https://github.com/marvinified/voctar/blob/e0ca3d3d1d609020e9139530aea9c8e60eca92ae/docs/assets/vectar.png" alt="Voctar logo" width="180" />
 </p>
 
 <h1 align="center">Voctar</h1>
