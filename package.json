@@ -15,9 +15,14 @@
     "prepublishOnly": "yarn clean && yarn build"
   },
   "keywords": [
+    "rag",
     "vector",
+    "vector-database",
     "embeddings",
+    "chunking",
     "semantic-search",
+    "semantic-retrieval",
+    "typescript",
     "qdrant",
     "sqlite"
   ],
