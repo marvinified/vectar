@@ -16,11 +16,10 @@
 </p>
 
 ## Features
-
+- Simple primitives: `embed` and `search`
 - Supports multiple vector stores: SQLite, Qdrant, in-memory, or custom store providers
 - Automatic chunking for long documents with multiple strategies (`fixed`, `recursive`, `sentence`, `paragraph`, `semantic`)
 - Semantic search with score thresholds and metadata filtering
-- Simple primitives: `embed`, `search` and more
 - TypeScript-first.
 
 ## Quick Start
