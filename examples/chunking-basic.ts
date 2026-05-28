@@ -2,7 +2,7 @@
  * Basic chunking example (minimal output)
  */
 
-import { Vectar, chunking } from '../index';
+import { Voctar, chunking } from '../index';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
@@ -34,7 +34,7 @@ async function main() {
     console.log('Set OPENAI_API_KEY to run embedding search');
     return;
   }
-  const vector = new Vectar({
+  const vector = new Voctar({
     embedding: {
       type: 'openai',
       apiKey: process.env.OPENAI_API_KEY,

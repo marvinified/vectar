@@ -1,16 +1,16 @@
-# Vectar Storage Backends
+# Voctar Storage Backends
 
-This guide covers the available storage backends in Vectar and when to use each one.
+This guide covers the available storage backends in Voctar and when to use each one.
 
-Vectar is config-first:
+Voctar is config-first:
 
 - your app chooses the backend,
 - your app reads env vars (if any),
-- your app passes explicit config to `new Vectar(...)`.
+- your app passes explicit config to `new Voctar(...)`.
 
 ## Available Backends
 
-Vectar supports:
+Voctar supports:
 
 - `sqlite`
 - `qdrant`
@@ -46,9 +46,9 @@ Trade-offs:
 Example:
 
 ```typescript
-import { Vectar } from 'vectar';
+import { Voctar } from 'voctar';
 
-const vector = new Vectar({
+const vector = new Voctar({
   embedding: {
     type: 'openai',
     apiKey: process.env.OPENAI_API_KEY!,
@@ -92,9 +92,9 @@ Trade-offs:
 Example:
 
 ```typescript
-import { Vectar } from 'vectar';
+import { Voctar } from 'voctar';
 
-const vector = new Vectar({
+const vector = new Voctar({
   embedding: {
     type: 'openai',
     apiKey: process.env.OPENAI_API_KEY!,
@@ -125,9 +125,9 @@ Trade-offs:
 Example:
 
 ```typescript
-import { Vectar } from 'vectar';
+import { Voctar } from 'voctar';
 
-const vector = new Vectar({
+const vector = new Voctar({
   embedding: {
     type: 'openai',
     apiKey: process.env.OPENAI_API_KEY!,
@@ -147,9 +147,9 @@ The provider must implement `VectorStoreProvider`.
 Example:
 
 ```typescript
-import { Vectar } from 'vectar';
+import { Voctar } from 'voctar';
 
-const vector = new Vectar({
+const vector = new Voctar({
   embedding: {
     type: 'openai',
     apiKey: process.env.OPENAI_API_KEY!,
@@ -165,7 +165,7 @@ See [`CUSTOM_PROVIDERS.md`](./CUSTOM_PROVIDERS.md) for full interface details.
 
 ## Environment Variable Pattern (App-Owned)
 
-Vectar does not auto-load env vars, but many apps use a selector like this:
+Voctar does not auto-load env vars, but many apps use a selector like this:
 
 ```bash
 VECTOR_STORE=sqlite  # sqlite | qdrant | memory

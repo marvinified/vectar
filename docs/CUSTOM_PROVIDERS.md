@@ -1,13 +1,13 @@
 # Custom Providers
 
-Vectar supports custom providers for embeddings and storage.
+Voctar supports custom providers for embeddings and storage.
 
 ## Use Custom Providers
 
 ```typescript
-import { Vectar } from 'vectar';
+import { Voctar } from 'voctar';
 
-const vector = new Vectar({
+const vector = new Voctar({
   embedding: {
     type: 'custom',
     provider: myEmbeddingProvider,
@@ -24,7 +24,7 @@ const vector = new Vectar({
 Implement the `EmbeddingProvider` interface:
 
 ```typescript
-import type { EmbeddingProvider } from 'vectar';
+import type { EmbeddingProvider } from 'voctar';
 
 export class MyEmbeddingProvider implements EmbeddingProvider {
   async embed(text: string): Promise<number[]> {
@@ -62,7 +62,7 @@ import type {
   SearchOptions,
   SearchResult,
   CollectionConfig,
-} from 'vectar';
+} from 'voctar';
 
 export class MyVectorStoreProvider implements VectorStoreProvider {
   async ensureCollection(name: string, dimension: number, config?: CollectionConfig): Promise<void> {

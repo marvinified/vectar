@@ -1,11 +1,11 @@
-# Vectar Examples
+# Voctar Examples
 
-This directory contains comprehensive examples demonstrating Vectar capabilities.
+This directory contains comprehensive examples demonstrating Voctar capabilities.
 
 ## Examples
 
 ### 1. Simple Example (`example-simple.ts`)
-Basic usage of Vectar with automatic chunking and document management.
+Basic usage of Voctar with automatic chunking and document management.
 
 ```bash
 tsx libs/vector/examples/example-simple.ts

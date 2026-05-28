@@ -1,13 +1,13 @@
-# Vectar API Reference
+# Voctar API Reference
 
-This document covers the full public API exported by `vectar`.
+This document covers the full public API exported by `voctar`.
 
 ## Package Exports
 
 ```typescript
 import {
-  Vectar,
-  Vector, // alias of Vectar
+  Voctar,
+  Vector, // alias of Voctar
   chunking,
   ChunkingService,
   // types
@@ -23,22 +23,22 @@ import {
   VectorEmbeddingError,
   VectorSearchError,
   VectorStoreError,
-} from 'vectar';
+} from 'voctar';
 ```
 
-## `class Vectar` (aka `Vector`)
+## `class Voctar` (aka `Vector`)
 
 ### Constructor
 
 ```typescript
-new Vectar(config?: VectorConfig)
+new Voctar(config?: VectorConfig)
 ```
 
-Creates a Vectar client with embedding and store providers.
+Creates a Voctar client with embedding and store providers.
 
 Notes:
 
-- If `store` is omitted, Vectar defaults to SQLite at `./vector.db`.
+- If `store` is omitted, Voctar defaults to SQLite at `./vector.db`.
 - `autoChunk` defaults to `true`.
 - `defaultChunkStrategy` defaults to `'recursive'`.
 - `defaultChunkSize` defaults to `1000`.
@@ -175,7 +175,7 @@ Returns the active vector store provider instance.
 
 ### Static Helpers
 
-#### `Vectar.getChunkId(documentId, chunkIndex)`
+#### `Voctar.getChunkId(documentId, chunkIndex)`
 
 ```typescript
 static getChunkId(documentId: string, chunkIndex: number): string
@@ -183,7 +183,7 @@ static getChunkId(documentId: string, chunkIndex: number): string
 
 Builds chunk id using `documentId#chunkIndex`.
 
-#### `Vectar.parseChunkId(chunkId)`
+#### `Voctar.parseChunkId(chunkId)`
 
 ```typescript
 static parseChunkId(
@@ -193,7 +193,7 @@ static parseChunkId(
 
 Parses chunk id into parent id and index, or returns `null`.
 
-#### `Vectar.isChunkId(id)`
+#### `Voctar.isChunkId(id)`
 
 ```typescript
 static isChunkId(id: string): boolean
@@ -353,7 +353,7 @@ interface VectorStoreProvider {
 
 ## Chunking API
 
-Vectar also exports chunking utilities:
+Voctar also exports chunking utilities:
 
 - `chunking` singleton service
 - `ChunkingService` class

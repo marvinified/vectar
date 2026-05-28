@@ -1,15 +1,15 @@
 <p align="center">
-  <img src="./docs/assets/vectar.png" alt="Vectar logo" width="180" />
+  <img src="./docs/assets/vectar.png" alt="Voctar logo" width="180" />
 </p>
 
-<h1 align="center">Vectar</h1>
+<h1 align="center">Voctar</h1>
 
 <p align="center">
   Simple TypeScript library with RAG primitives for embeddings, chunking, storage, and semantic retrieval.
 </p>
 
 <p align="center">
-  <img alt="npm version" src="https://img.shields.io/npm/v/vectar?logo=npm&color=CB3837" />
+  <img alt="npm version" src="https://img.shields.io/npm/v/voctar?logo=npm&color=CB3837" />
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white" />
   <img alt="Node" src="https://img.shields.io/badge/Node-%3E%3D18-339933?logo=node.js&logoColor=white" />
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
@@ -26,13 +26,13 @@
 ## Quick Start
 
 ```bash
-yarn add vectar
+yarn add voctar
 ```
 
 ```typescript
-import { Vectar } from 'vectar';
+import { Voctar } from 'voctar';
 
-const vector = new Vectar({
+const vector = new Voctar({
   embedding: {
     type: 'openai',
     apiKey: '<your-api-key>',
@@ -55,7 +55,7 @@ const results = await vector.search('documents', 'Some query');
 ### `embed(collection, text, options?)`
 
 Embeds a document into a collection.  
-If the text exceeds model limits, Vectar auto-chunks and stores chunk vectors.
+If the text exceeds model limits, Voctar auto-chunks and stores chunk vectors.
 
 ```typescript
 const { documentId, chunkIds } = await vector.embed('documents', longText, {

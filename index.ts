@@ -1,5 +1,5 @@
-// Vectar exports
-export { Vector, Vector as Vectar } from './src/vector';
+// Voctar exports
+export { Vector, Vector as Voctar } from './src/vector';
 export * from './src/providers';
 export * from './src/types';
 

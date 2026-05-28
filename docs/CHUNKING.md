@@ -1,6 +1,6 @@
 # Chunking Guide
 
-This is the single source of truth for chunking in Vectar, including:
+This is the single source of truth for chunking in Voctar, including:
 
 - chunk ID format and metadata model,
 - strategy behavior and options,
@@ -92,9 +92,9 @@ Every chunk stores rich metadata:
 ### Basic Chunking
 
 ```typescript
-import { Vectar } from '@libs/vectar';
+import { Voctar } from '@libs/voctar';
 
-const vector = new Vectar({
+const vector = new Voctar({
   embedding: {
     type: 'openai',
     apiKey: '<your-api-key>',
@@ -120,21 +120,21 @@ console.log(result.chunkIds);    // ["article-123#0", "article-123#1", ...]
 ### Parsing Chunk IDs
 
 ```typescript
-import { Vectar } from '@libs/vectar';
+import { Voctar } from '@libs/voctar';
 
 const chunkId = "article-123#5";
 
 // Parse chunk ID
-const parsed = Vectar.parseChunkId(chunkId);
+const parsed = Voctar.parseChunkId(chunkId);
 console.log(parsed);
 // { documentId: "article-123", chunkIndex: 5 }
 
 // Check if ID is a chunk
-console.log(Vectar.isChunkId(chunkId));  // true
-console.log(Vectar.isChunkId("article-123"));  // false
+console.log(Voctar.isChunkId(chunkId));  // true
+console.log(Voctar.isChunkId("article-123"));  // false
 
 // Generate chunk ID
-const id = Vectar.getChunkId("article-123", 5);
+const id = Voctar.getChunkId("article-123", 5);
 console.log(id);  // "article-123#5"
 ```
 
@@ -145,8 +145,8 @@ const results = await vector.search('docs', 'installation steps');
 
 results.forEach(result => {
   // Check if result is from a chunked document
-  if (Vectar.isChunkId(result.id)) {
-    const { documentId, chunkIndex } = Vectar.parseChunkId(result.id)!;
+  if (Voctar.isChunkId(result.id)) {
+    const { documentId, chunkIndex } = Voctar.parseChunkId(result.id)!;
     
     console.log(`Found in document: ${documentId}`);
     console.log(`Chunk ${chunkIndex + 1} of ${result.metadata.totalChunks}`);
@@ -172,7 +172,7 @@ const results = await vector.search('docs', 'anything', {
 const sortedChunks = results
   .map(r => ({
     ...r,
-    ...Vectar.parseChunkId(r.id)!
+    ...Voctar.parseChunkId(r.id)!
   }))
   .sort((a, b) => a.chunkIndex - b.chunkIndex);
 

@@ -1,4 +1,4 @@
-# Contributing to Vectar
+# Contributing to Voctar
 
 Thanks for your interest in contributing.
 

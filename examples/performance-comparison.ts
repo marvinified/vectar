@@ -1,5 +1,5 @@
 /**
- * Vectar Store Performance Comparison
+ * Voctar Store Performance Comparison
  * 
  * Tests retrieval speed across different vector store providers:
  * - SQLite (file-based)
@@ -10,7 +10,7 @@
  * Run with: tsx libs/vector/examples/performance-comparison.ts
  */
 
-import { Vectar } from '../index';
+import { Voctar } from '../index';
 import { OpenAIEmbeddingProvider } from '../providers/embeddings/openai';
 import { SQLiteVectorStoreProvider } from '../providers/stores/sqlite';
 import { InMemoryVectorStoreProvider } from '../providers/stores/memory';
@@ -188,13 +188,13 @@ class PerformanceTester {
   }
 
   private async getAvailableProviders() {
-    const providers: Array<{ name: string; service: Vectar }> = [];
+    const providers: Array<{ name: string; service: Voctar }> = [];
     
     // Always include SQLite providers
     providers.push(
       {
         name: 'SQLite (File)',
-        service: new Vectar({
+        service: new Voctar({
           embeddingProvider: new OpenAIEmbeddingProvider({
             apiKey: env.OPENAI_API_KEY,
             model: env.EMBEDDING_MODEL,
@@ -208,7 +208,7 @@ class PerformanceTester {
       },
       {
         name: 'SQLite (Memory)',
-        service: new Vectar({
+        service: new Voctar({
           embeddingProvider: new OpenAIEmbeddingProvider({
             apiKey: env.OPENAI_API_KEY,
             model: env.EMBEDDING_MODEL,
@@ -222,7 +222,7 @@ class PerformanceTester {
       },
       {
         name: 'InMemory',
-        service: new Vectar({
+        service: new Voctar({
           embeddingProvider: new OpenAIEmbeddingProvider({
             apiKey: env.OPENAI_API_KEY,
             model: env.EMBEDDING_MODEL,
@@ -237,7 +237,7 @@ class PerformanceTester {
     if (env.QDRANT_URL) {
       providers.push({
         name: 'Qdrant',
-        service: new Vectar({
+        service: new Voctar({
           embeddingProvider: new OpenAIEmbeddingProvider({
             apiKey: env.OPENAI_API_KEY,
             model: env.EMBEDDING_MODEL,
@@ -257,7 +257,7 @@ class PerformanceTester {
     return providers;
   }
 
-  private async testProvider(provider: { name: string; service: Vectar }): Promise<PerformanceMetrics> {
+  private async testProvider(provider: { name: string; service: Voctar }): Promise<PerformanceMetrics> {
     const { service } = provider;
     const errors: string[] = [];
     let totalEmbeddingTime = 0;
@@ -391,7 +391,7 @@ class PerformanceTester {
     // Clean up Qdrant collection if it was created
     if (env.QDRANT_URL) {
       try {
-        const qdrantService = new Vectar({
+        const qdrantService = new Voctar({
           embeddingProvider: new OpenAIEmbeddingProvider({
             apiKey: env.OPENAI_API_KEY,
             model: env.EMBEDDING_MODEL,

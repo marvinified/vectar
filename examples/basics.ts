@@ -1,9 +1,9 @@
 /**
- * Simple Vectar Example
+ * Simple Voctar Example
  * Minimal flow: embed -> chunk count -> retrieve text
  */
 
-import { Vectar } from '../index';
+import { Voctar } from '../index';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
@@ -14,7 +14,7 @@ async function main() {
   }
 
   // Initialize the vector instance
-  const vector = new Vectar({
+  const vector = new Voctar({
     embedding: {
       type: 'openai',
       apiKey: process.env.OPENAI_API_KEY,
