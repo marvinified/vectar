@@ -9,12 +9,10 @@
 </p>
 
 <p align="center">
+  <img alt="npm version" src="https://img.shields.io/npm/v/vectar?logo=npm&color=CB3837" />
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white" />
   <img alt="Node" src="https://img.shields.io/badge/Node-%3E%3D18-339933?logo=node.js&logoColor=white" />
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  <img alt="RAG primitives" src="https://img.shields.io/badge/RAG-primitives-7C3AED" />
-  <img alt="Chunking" src="https://img.shields.io/badge/Chunking-fixed%20%7C%20recursive%20%7C%20sentence%20%7C%20paragraph%20%7C%20semantic-2563EB" />
-  <img alt="Stores" src="https://img.shields.io/badge/Stores-SQLite%20%7C%20Qdrant%20%7C%20Memory-0EA5E9" />
 </p>
 
 ## Features
@@ -26,6 +24,10 @@
 - TypeScript-first.
 
 ## Quick Start
+
+```bash
+yarn add vectar
+```
 
 ```typescript
 import { Vectar } from 'vectar';
