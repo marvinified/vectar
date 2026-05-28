@@ -5,7 +5,7 @@
 <h1 align="center">Voctar</h1>
 
 <p align="center">
-  Simple TypeScript library with RAG primitives for embeddings, chunking, storage, and semantic retrieval.
+  Simple TypeScript library with RAG primitives for embeddings, chunking, storage, and retrieval.
 </p>
 
 <p align="center">
