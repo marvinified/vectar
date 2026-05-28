@@ -1,0 +1,6 @@
+test.ts
+test.pdf
+examples
+chunking/examples-semantic.ts
+*.log
+.DS_Store

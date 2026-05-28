@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "types": ["node"]
+  },
+  "include": [
+    "index.ts",
+    "src/vector.ts",
+    "src/types.ts",
+    "providers/**/*.ts",
+    "chunking/**/*.ts"
+  ],
+  "exclude": [
+    "dist",
+    "docs",
+    "examples",
+    "test.ts",
+    "chunking/examples-semantic.ts"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "vectar",
+  "version": "0.1.0",
+  "description": "TypeScript library with RAG primitives for vector embeddings, chunking, storing and retrieval.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "docs"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "yarn clean && yarn build"
+  },
+  "keywords": [
+    "vector",
+    "embeddings",
+    "semantic-search",
+    "qdrant",
+    "sqlite"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@qdrant/js-client-rest": "^1.13.0",
+    "better-sqlite3": "^12.4.1",
+    "openai": "^6.3.0",
+    "tiktoken": "^1.0.22",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^24.0.0",
+    "@types/uuid": "^9.0.8",
+    "typescript": "^5.8.3"
+  }
+}
