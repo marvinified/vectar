@@ -148,6 +148,8 @@ export class RecursiveChunkingStrategy implements ChunkingStrategy {
    * Get overlap text that is approximately 'overlapTokens' tokens
    */
   private getOverlapText(text: string, overlapTokens: number): string {
+    if (overlapTokens === 0) return '';
+
     // Binary search for the right amount of text
     let start = 0;
     let end = text.length;
@@ -181,10 +183,19 @@ export class RecursiveChunkingStrategy implements ChunkingStrategy {
       
       chunks.push(chunkText);
       const chunkLength = chunkText.length;
+
+      if (start + chunkLength >= text.length) {
+        break;
+      }
       
       // Calculate overlap start position
       const overlapText = this.getOverlapText(chunkText, overlap);
-      start += chunkLength - overlapText.length;
+      const nextStart = start + chunkLength - overlapText.length;
+      if (nextStart <= start) {
+        break;
+      }
+
+      start = nextStart;
 
       if (text.length - start < overlapText.length) {
         break;

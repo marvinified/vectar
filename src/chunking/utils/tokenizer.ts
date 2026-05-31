@@ -13,7 +13,7 @@ function getEmbeddingEncoding() {
   if (!cachedEncoding) {
     // Use cl100k_base encoding which is used by text-embedding-3 models
     // This is compatible with GPT-4 and text-embedding-3 models
-    cachedEncoding = encoding_for_model('gpt-4');
+    cachedEncoding = encoding_for_model('text-embedding-3-small');
   }
   return cachedEncoding;
 }
@@ -25,11 +25,12 @@ export function countTokens(text: string): number {
   if (!text || text.length === 0) {
     return 0;
   }
-  
+
   try {
     const encoding = getEmbeddingEncoding();
     return encoding.encode(text).length;
   } catch (error) {
+    console.error("using fallback tokenizer, error:", error);
     // Fallback to approximation if tiktoken fails
     // Rough approximation: 1 token ≈ 4 characters for English text
     return Math.ceil(text.length / 4);
@@ -47,4 +48,3 @@ export function estimateTokens(text: string): number {
   // Rough approximation: 1 token ≈ 4 characters for English text
   return Math.ceil(text.length / 4);
 }
-

@@ -49,9 +49,18 @@ export class FixedSizeChunkingStrategy implements ChunkingStrategy {
         },
       });
 
+      if (endChar >= normalizedText.length) {
+        break;
+      }
+
       // Calculate overlap position using token count
       const overlapText = this.getOverlapText(chunkText, overlap);
-      startChar = endChar - overlapText.length;
+      const nextStartChar = endChar - overlapText.length;
+      if (nextStartChar <= startChar) {
+        break;
+      }
+
+      startChar = nextStartChar;
       chunkIndex++;
 
       // Avoid creating tiny overlapping chunks at the end

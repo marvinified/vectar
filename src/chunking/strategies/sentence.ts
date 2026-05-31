@@ -46,8 +46,8 @@ export class SentenceChunkingStrategy implements ChunkingStrategy {
           },
         });
 
-        // Keep last N sentences for overlap
-        const overlapSentences = currentChunk.slice(-overlap);
+        // Keep last N sentences for overlap. slice(-0) equals slice(0), so handle zero explicitly.
+        const overlapSentences = overlap > 0 ? currentChunk.slice(-overlap) : [];
         currentChunk = [...overlapSentences, sentence];
         currentTokens = countTokens(overlapSentences.join(' ')) + sentenceTokens;
         startChar = endChar - (overlapSentences.join(' ').length);

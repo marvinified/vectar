@@ -49,8 +49,8 @@ export class ParagraphChunkingStrategy implements ChunkingStrategy {
           },
         });
 
-        // Keep last N paragraphs for overlap
-        const overlapParagraphs = currentChunk.slice(-overlap);
+        // Keep last N paragraphs for overlap. slice(-0) equals slice(0), so handle zero explicitly.
+        const overlapParagraphs = overlap > 0 ? currentChunk.slice(-overlap) : [];
         currentChunk = [...overlapParagraphs, paragraph];
         currentTokens = countTokens(overlapParagraphs.join('\n\n')) + paragraphTokens;
         startChar = endChar - (overlapParagraphs.join('\n\n').length);
