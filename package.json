@@ -1,6 +1,6 @@
 {
   "name": "voctar",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "TypeScript library with RAG primitives for vector embeddings, chunking, storing and retrieval.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,6 +26,14 @@
     "qdrant",
     "sqlite"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marvinified/voctar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/marvinified/voctar/issues"
+  },
+  "homepage": "https://github.com/marvinified/voctar#readme",
   "license": "MIT",
   "engines": {
     "node": ">=18"

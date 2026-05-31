@@ -96,6 +96,7 @@ Each result includes:
 ## Documentation
 
 - [Docs Index](./docs/README.md)
+- [Embeddings](./docs/EMBEDDINGS.md)
 - [Storage Backends](./docs/STORAGE_BACKENDS.md)
 - [Chunking](./docs/CHUNKING.md)
 

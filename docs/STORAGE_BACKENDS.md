@@ -2,12 +2,6 @@
 
 This guide covers the available storage backends in Voctar and when to use each one.
 
-Voctar is config-first:
-
-- your app chooses the backend,
-- your app reads env vars (if any),
-- your app passes explicit config to `new Voctar(...)`.
-
 ## Available Backends
 
 Voctar supports:
@@ -19,9 +13,9 @@ Voctar supports:
 
 ## Quick Selection Guide
 
+- Use `memory` for tests and short-lived demos only.
 - Use `sqlite` for local dev and simple production workloads.
 - Use `qdrant` for larger datasets, higher throughput, or multi-instance deployments.
-- Use `memory` for tests and short-lived demos only.
 - Use `custom` when integrating an internal or third-party vector store.
 
 ## SQLite Backend
@@ -70,6 +64,34 @@ store: {
 }
 ```
 
+## In-Memory Backend
+
+Best for:
+
+- unit tests,
+- quick local examples.
+
+Trade-offs:
+
+- data is lost on restart,
+- unsuitable for production persistence.
+
+Example:
+
+```typescript
+import { Voctar } from 'voctar';
+
+const vector = new Voctar({
+  embedding: {
+    type: 'openai',
+    apiKey: process.env.OPENAI_API_KEY!,
+  },
+  store: {
+    type: 'memory',
+  },
+});
+```
+
 ## Qdrant Backend
 
 Best for:
@@ -110,33 +132,6 @@ const vector = new Voctar({
 });
 ```
 
-## In-Memory Backend
-
-Best for:
-
-- unit tests,
-- quick local examples.
-
-Trade-offs:
-
-- data is lost on restart,
-- unsuitable for production persistence.
-
-Example:
-
-```typescript
-import { Voctar } from 'voctar';
-
-const vector = new Voctar({
-  embedding: {
-    type: 'openai',
-    apiKey: process.env.OPENAI_API_KEY!,
-  },
-  store: {
-    type: 'memory',
-  },
-});
-```
 
 ## Custom Backend
 
@@ -161,29 +156,49 @@ const vector = new Voctar({
 });
 ```
 
-See [`CUSTOM_PROVIDERS.md`](./CUSTOM_PROVIDERS.md) for full interface details.
-
-## Environment Variable Pattern (App-Owned)
-
-Voctar does not auto-load env vars, but many apps use a selector like this:
-
-```bash
-VECTOR_STORE=sqlite  # sqlite | qdrant | memory
-SQLITE_PATH=./data/vector.db
-QDRANT_URL=http://localhost
-QDRANT_PORT=6333
-QDRANT_API_KEY=your_api_key
-```
-
-Then in app bootstrap:
+Full interface example:
 
 ```typescript
-const storeType = process.env.VECTOR_STORE ?? 'sqlite';
+import type {
+  CollectionConfig,
+  SearchOptions,
+  SearchResult,
+  VectorPoint,
+  VectorStoreProvider,
+} from 'voctar';
+
+export class MyVectorStoreProvider implements VectorStoreProvider {
+  async ensureCollection(name: string, dimension: number, config?: CollectionConfig): Promise<void> {
+    // Create collection/index if missing.
+  }
+
+  async upsert(collection: string, points: VectorPoint[]): Promise<void> {
+    // Insert or update vectors.
+  }
+
+  async search(collection: string, vector: number[], options: SearchOptions): Promise<SearchResult[]> {
+    // Return scored results in descending relevance.
+    return [];
+  }
+
+  async delete(collection: string, ids: string[]): Promise<void> {
+    // Delete matching IDs.
+  }
+
+  async deleteCollection(collection: string): Promise<void> {
+    // Drop collection/index.
+  }
+
+  async getIdsByFilter(collection: string, filter: Record<string, any>, limit?: number): Promise<string[]> {
+    // Return IDs that match filter.
+    return [];
+  }
+}
 ```
 
-## Migration and Operations Notes
+Integration tips:
 
-- Start with `sqlite` if you are early-stage.
-- Move to `qdrant` when dataset size, traffic, or deployment topology requires it.
-- Back up SQLite database files regularly.
-- For Qdrant, use snapshots/backups supported by your Qdrant setup.
+- Ensure `ensureCollection()` respects the embedding provider dimension.
+- Implement filter behavior consistently in `search()` and `getIdsByFilter()`.
+- Return search results in descending relevance order.
+- Normalize storage errors with useful messages so callers can debug quickly.

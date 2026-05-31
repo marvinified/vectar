@@ -280,6 +280,16 @@ type RuntimeEmbeddingConfig =
     };
 ```
 
+The built-in OpenAI provider defaults to:
+
+- `model`: `text-embedding-3-small`
+- `dimension`: `1536`
+- `maxRetries`: `3`
+
+Set `model` to any OpenAI embedding model supported by your OpenAI account. Set `dimension` when the model supports configurable embedding dimensions or when your vector store collection expects a specific dimension. A collection can only contain vectors with one dimension, so changing model or dimension usually requires a new collection.
+
+Use `{ type: 'custom', provider }` for local models, hosted non-OpenAI models, or any other embedding service. Custom providers must implement `EmbeddingProvider`.
+
 ### `RuntimeStoreConfig`
 
 ```typescript
