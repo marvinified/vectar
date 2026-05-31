@@ -1,6 +1,6 @@
 {
   "name": "voctar",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "TypeScript library with RAG primitives for vector embeddings, chunking, storing and retrieval.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
